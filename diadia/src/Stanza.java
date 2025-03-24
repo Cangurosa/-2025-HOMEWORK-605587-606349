@@ -141,10 +141,16 @@ public class Stanza {
 	public boolean hasAttrezzo(String nomeAttrezzo) {
 		boolean trovato;
 		trovato = false;
-		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo.getNome().equals(nomeAttrezzo))
-				trovato = true;
-		}
+		for (int i = 0; i < this.attrezzi.length; i++) 
+		{
+			if(attrezzi[i]!=null)
+			{
+				Attrezzo attrezzo = this.attrezzi[i];
+				
+				if (attrezzo.getNome().equals(nomeAttrezzo))
+					trovato = true;
+			}
+		} 
 		return trovato;
 	}
 

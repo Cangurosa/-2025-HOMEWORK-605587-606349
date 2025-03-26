@@ -26,9 +26,10 @@ public class DiaDia {
 			"o regalarli se pensi che possano ingraziarti qualcuno.\n\n"+
 			"Per conoscere le istruzioni usa il comando 'aiuto'.";
 	
-	static final private String[] elencoComandi = {"vai", "aiuto", "fine"};
+	static final private String[] elencoComandi = {"vai", "aiuto", "fine", "mostra"};
 
 	private Partita partita;
+	private int cfu = 20;
 
 	public DiaDia() {
 		this.partita = new Partita();
@@ -63,14 +64,29 @@ public class DiaDia {
 			this.vai(comandoDaEseguire.getParametro());
 		else if (comandoDaEseguire.getNome().equals("aiuto"))
 			this.aiuto();
+		else if (comandoDaEseguire.getNome().equals("mostra"))
+			this.mostra();
 		else
 			System.out.println("Comando sconosciuto");
 		if (this.partita.vinta()) {
 			System.out.println("Hai vinto!");
 			return true;
-		} else
+		} 
+		
+		else if(this.partita.persa())
+		{
+			System.out.println("Hai perso!");
+			return true;
+		}
+		else
 			return false;
 	}   
+
+	private void mostra() 
+	{
+		System.out.println(partita.getCfu());
+		System.out.println(partita.getBorsa());
+	}
 
 	// implementazioni dei comandi dell'utente:
 
@@ -96,7 +112,6 @@ public class DiaDia {
 			System.out.println("Direzione inesistente");
 		else {
 			this.partita.setStanzaCorrente(prossimaStanza);
-			int cfu = this.partita.getCfu();
 			this.partita.setCfu(cfu--);
 		}
 		System.out.println(partita.getStanzaCorrente().getDescrizione());

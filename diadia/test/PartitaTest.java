@@ -32,4 +32,11 @@ public class PartitaTest {
 		partita.setStanzaCorrente(partita.getStanzaVincente()); //metto nella stanza corrente la stanza vincente
 		assertTrue(partita.vinta()); //verifico di aver vinto
 	}
+	
+	@Test
+	public void testIsFinita()
+	{
+		partita.setCfu(0); //imposto i cfu a 0
+		assertTrue(partita.isFinita()); //verifico che la funzione mi restituisca True (partita finita)
+	}
 }

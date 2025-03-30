@@ -56,26 +56,27 @@ public class Labirinto {
 		stanzaFinale = biblioteca; //stanza di vittoria "Biblioteca"
 		stanzaCorrente = stanzaIniziale; //in stanzaCorrente ci metto la stanza di partenza
 	}
+	
 	/**
  	* Ritorna la stanza vincente
-  	* 
+  	* @return la stanza vincente
 	*/
 	public Stanza getStanzaVincente() {
 		return this.stanzaFinale;
 	}
+	
 	/**
  	* Ritorna la stanza corrente
-  	* 
+  	* @return la stanza corrente
 	*/
-	
 	public Stanza getStanzaCorrente() {
 		return this.stanzaCorrente;
 	}
+	
 	/**
  	* Imposta la stanza corrente
-  	* 
+  	* @param stanzaCorrente la stanza in cui si trova il giocatore
 	*/
-	
 	public void setStanzaCorrente(Stanza stanzaCorrente)
 	{
 		this.stanzaCorrente = stanzaCorrente;

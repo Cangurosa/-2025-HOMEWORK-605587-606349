@@ -141,6 +141,11 @@ public class DiaDia {
 				partita.getBorsa().removeAttrezzo(nomeAttrezzo);
 				System.out.println("Attrezzo rimosso dalla borsa e lasciato nella stanza: " + partita.getStanzaCorrente());
 			}
+
+			else
+			{
+				System.out.println("Oggetto non trovato nella borsa");
+			}
 		}
 	}
 

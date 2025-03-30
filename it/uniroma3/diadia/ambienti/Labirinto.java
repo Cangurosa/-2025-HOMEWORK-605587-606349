@@ -4,9 +4,9 @@ package diadia;
 * Ha la responsabilità di creare il labirinto, di memorizzare la stanza
 * iniziale (entrata) e quella finale (uscita)
  *
- * @author  Daniel 605587, Gabriel 606349
+ * @author  Daniel Della Posta 605587, Gabriel Garcia Ramos 606349
  * @see Stanza
- * @version base
+ * @version finale
  */
 
 public class Labirinto {
@@ -23,7 +23,7 @@ public class Labirinto {
 	private void creaLabirinto()
 	{
 		//creazione degli attrezzi
-    	Attrezzo lanterna = new Attrezzo("lanterna",3);
+    		Attrezzo lanterna = new Attrezzo("lanterna",3);
 		Attrezzo osso = new Attrezzo("osso",1);
 	
 		
@@ -56,14 +56,25 @@ public class Labirinto {
 		stanzaFinale = biblioteca; //stanza di vittoria "Biblioteca"
 		stanzaCorrente = stanzaIniziale; //in stanzaCorrente ci metto la stanza di partenza
 	}
-	
+	/**
+ 	* Ritorna la stanza vincente
+  	* 
+	*/
 	public Stanza getStanzaVincente() {
 		return this.stanzaFinale;
 	}
+	/**
+ 	* Ritorna la stanza corrente
+  	* 
+	*/
 	
 	public Stanza getStanzaCorrente() {
 		return this.stanzaCorrente;
 	}
+	/**
+ 	* Imposta la stanza corrente
+  	* 
+	*/
 	
 	public void setStanzaCorrente(Stanza stanzaCorrente)
 	{

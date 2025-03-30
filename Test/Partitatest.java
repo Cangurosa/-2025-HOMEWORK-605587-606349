@@ -1,8 +1,8 @@
-package diadia;
-
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import it.uniroma3.diadia.Partita;
 
 //*I metodi principali sono getStanzaCorrente(), setStanzaCorrente() e vinta()*//
 public class Partitatest {

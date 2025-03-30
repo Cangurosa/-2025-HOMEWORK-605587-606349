@@ -116,9 +116,14 @@ public class DiaDia {
 		}
 		else
 		{
-			partita.getBorsa().addAttrezzo(partita.getStanzaCorrente().getAttrezzo(nomeAttrezzo));
-			partita.getStanzaCorrente().removeAttrezzo(partita.getStanzaCorrente().getAttrezzo(nomeAttrezzo));
-			System.out.println("Attrezzo preso dalla stanza e messo in borsa");
+			if(partita.getStanzaCorrente().hasAttrezzo(nomeAttrezzo))
+			{
+				partita.getBorsa().addAttrezzo(partita.getStanzaCorrente().getAttrezzo(nomeAttrezzo));
+				partita.getStanzaCorrente().removeAttrezzo(partita.getStanzaCorrente().getAttrezzo(nomeAttrezzo));
+				System.out.println("Attrezzo preso dalla stanza e messo in borsa");
+			}
+			else
+				System.out.println("Oggetto non trovato");
 		}
 	}
 	
@@ -130,9 +135,12 @@ public class DiaDia {
 		}
 		else
 		{
-			partita.getStanzaCorrente().addAttrezzo(partita.getBorsa().getAttrezzo(nomeAttrezzo));
-			partita.getBorsa().removeAttrezzo(nomeAttrezzo);
-			System.out.println("Attrezzo rimosso dalla borsa e lasciato nella stanza: " + partita.getStanzaCorrente());
+			if(partita.getBorsa().hasAttrezzo(nomeAttrezzo))
+			{
+				partita.getStanzaCorrente().addAttrezzo(partita.getBorsa().getAttrezzo(nomeAttrezzo));
+				partita.getBorsa().removeAttrezzo(nomeAttrezzo);
+				System.out.println("Attrezzo rimosso dalla borsa e lasciato nella stanza: " + partita.getStanzaCorrente());
+			}
 		}
 	}
 

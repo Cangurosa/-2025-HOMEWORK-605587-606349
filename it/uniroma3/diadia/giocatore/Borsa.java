@@ -78,6 +78,12 @@ public class Borsa {
 				if(attrezzi[i].getNome().equals(nomeAttrezzo))
 				{
 					attrezzi[i]=a;
+					this.numeroAttrezzi++;
+
+					//Aggiorno l'array
+
+					for(int j=i; j<attrezzi.lenght;  j++)
+						attrezzi[j]=attrezzi[j+1];
 				}
 			}
 		}

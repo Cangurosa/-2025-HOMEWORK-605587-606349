@@ -1,4 +1,6 @@
-package diadia;
+package it.uniroma3.diadia.ambienti;
+
+import it.uniroma3.diadia.attrezzi.*;
 
 /**
 * Ha la responsabilità di creare il labirinto, di memorizzare la stanza

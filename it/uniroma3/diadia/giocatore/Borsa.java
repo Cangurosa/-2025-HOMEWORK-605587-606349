@@ -44,8 +44,7 @@ public class Borsa {
 		}
 		return a;
 	}
-	
-	
+
 	public int getPeso()
 	{
 		int peso = 0;

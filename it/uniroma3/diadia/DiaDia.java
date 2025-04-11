@@ -1,4 +1,6 @@
 package it.uniroma3.diadia;
+import it.uniroma3.diadia.Comando.Comando;
+import it.uniroma3.diadia.Comando.FabbricaDiComandiFisarmonica;
 import it.uniroma3.diadia.ambienti.*;
 
 /**
@@ -52,42 +54,19 @@ public class DiaDia {
 	 * @return true se l'istruzione e' eseguita e il gioco continua, false altrimenti
 	 */
 	private boolean processaIstruzione(String istruzione) {
-		Comando comandoDaEseguire = new Comando(istruzione);
+		Comando comandoDaEseguire;
+		FabbricaDiComandiFisarmonica factory = new FabbricaDiComandiFisarmonica();
 
-		if (comandoDaEseguire.getNome().equals("fine")) {
-			this.fine(); 
-			return true;
-			
-		} else if (comandoDaEseguire.getNome().equals("vai"))
-			this.vai(comandoDaEseguire.getParametro());
+		comandoDaEseguire = factory.costruisciComando(istruzione);
+		comandoDaEseguire.esegui(this.partita);
+		if (this.partita.vinta())
+		System.out.println("Hai vinto!");
+
+		if (!this.partita.isFinita())
+		System.out.println("Hai esaurito i CFU...");
 		
-		else if (comandoDaEseguire.getNome().equals("aiuto"))
-			this.aiuto();
-		
-		else if(comandoDaEseguire.getNome().equals("mostra"))
-			this.mostra();
-		
-		else if(comandoDaEseguire.getNome().equals("prendi"))
-			this.prendi(comandoDaEseguire.getParametro());
-		
-		else if(comandoDaEseguire.getNome().equals("lascia"))
-			this.lascia(comandoDaEseguire.getParametro());
-		
-		else
-			System.out.println("Comando sconosciuto");
-		if (this.partita.vinta()) {
-			System.out.println("Hai vinto!");
-			return true;
-		} 
-		
-		else if(this.partita.persa())
-		{
-			System.out.println("Hai perso!");
-			return true;
-		}
-		else
-			return false;
-	}   
+		return this.partita.isFinita();
+	}
 
 	// implementazioni dei comandi dell'utente:
 
@@ -136,6 +115,7 @@ public class DiaDia {
 			{
 				partita.getStanzaCorrente().addAttrezzo(partita.getBorsa().getAttrezzo(nomeAttrezzo));
 				partita.getBorsa().removeAttrezzo(nomeAttrezzo);
+				
 				io.mostraMessaggio("Attrezzo rimosso dalla borsa e lasciato nella stanza: " + partita.getStanzaCorrente());
 			}
 

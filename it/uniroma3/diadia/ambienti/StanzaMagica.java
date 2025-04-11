@@ -2,6 +2,16 @@ package it.uniroma3.diadia.ambienti;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
+
+/*
+ * Classe capace di rendere le stanze magiche dopo
+ * un certo numero di azioni. Essa è un estensione
+ * della classe Stanza
+ * 
+ * @author Della Posta Daniel 605587
+ * 
+ * @version base
+ */
 public class StanzaMagica extends Stanza{
     final static private int SOGLIA_MAGICA_DEFAULT = 3;
     private int contatoreAttrezziPosati;

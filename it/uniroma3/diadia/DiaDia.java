@@ -1,7 +1,6 @@
 package it.uniroma3.diadia;
 import it.uniroma3.diadia.Comando.Comando;
 import it.uniroma3.diadia.Comando.FabbricaDiComandiFisarmonica;
-import it.uniroma3.diadia.ambienti.*;
 
 /**
  * Classe principale di diadia, un semplice gioco di ruolo ambientato al dia.
@@ -26,14 +25,11 @@ public class DiaDia {
 			"puoi raccoglierli, usarli, posarli quando ti sembrano inutili\n" +
 			"o regalarli se pensi che possano ingraziarti qualcuno.\n\n"+
 			"Per conoscere le istruzioni usa il comando 'aiuto'.";
-	
-	static final private String[] elencoComandi = {"vai", "aiuto", "fine", "prendi", "lascia", "mostra"};
 
-	private IOConsole io;
+	private IO io;
 	private Partita partita;
-	private int cfu = 20;
 
-	public DiaDia(IOConsole io) {
+	public DiaDia(IO io) {
 		this.io = io;
 		this.partita = new Partita();
 	}
@@ -43,7 +39,7 @@ public class DiaDia {
 
 		io.mostraMessaggio(MESSAGGIO_BENVENUTO);	
 		do		
-			istruzione = io.leggiriga();
+			istruzione = io.leggiRiga();
 		while (!processaIstruzione(istruzione));
 	}   
 
@@ -55,14 +51,14 @@ public class DiaDia {
 	 */
 	private boolean processaIstruzione(String istruzione) {
 		Comando comandoDaEseguire;
-		FabbricaDiComandiFisarmonica factory = new FabbricaDiComandiFisarmonica();
+		FabbricaDiComandiFisarmonica factory = new FabbricaDiComandiFisarmonica(this.io);
 
 		comandoDaEseguire = factory.costruisciComando(istruzione);
 		comandoDaEseguire.esegui(this.partita);
 		if (this.partita.vinta())
 		System.out.println("Hai vinto!");
 
-		if (!this.partita.isFinita())
+		else if (this.partita.persa())
 		System.out.println("Hai esaurito i CFU...");
 		
 		return this.partita.isFinita();
@@ -73,7 +69,7 @@ public class DiaDia {
 	/**
 	 * Stampa informazioni di aiuto.
 	 */
-	private void aiuto() {
+	/*private void aiuto() {
 		for(int i=0; i< elencoComandi.length; i++) 
 			io.mostraMessaggio(elencoComandi[i]+" ");
 		io.mostraMessaggio("");
@@ -130,6 +126,7 @@ public class DiaDia {
 	 * Cerca di andare in una direzione. Se c'e' una stanza ci entra 
 	 * e ne stampa il nome, altrimenti stampa un messaggio di errore
 	 */
+	/* 
 	private void vai(String direzione) {
 		if(direzione==null)
 			io.mostraMessaggio("Dove vuoi andare ?");
@@ -148,12 +145,14 @@ public class DiaDia {
 	/**
 	 * Comando "Fine".
 	 */
+	/* 
 	private void fine() {
 		io.mostraMessaggio("Grazie di aver giocato!");  // si desidera smettere
 	}
+	*/
 
 	public static void main(String[] argc) {
-		IOConsole io=new IOConsole();
+		IO io =new IOConsole();
 		DiaDia gioco = new DiaDia(io);
 		gioco.gioca();
 	}

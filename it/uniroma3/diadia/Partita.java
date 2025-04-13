@@ -46,7 +46,7 @@ public class Partita {
 	}
 	
 	public boolean persa() {
-		return (giocatore.getCfu() == 0);
+		return (this.giocatore.getCfu() == 0);
 	}
 
 	/**

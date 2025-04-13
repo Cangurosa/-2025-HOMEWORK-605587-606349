@@ -48,12 +48,15 @@ public class Borsa {
 	public int getPeso()
 	{
 		int peso = 0;
+		if(numeroAttrezzi==0)
+		return peso;
+		else{
 		for (int i= 0; i<this.numeroAttrezzi; i++)
 		{
 			if(attrezzi[i]!=null)
 				peso += this.attrezzi[i].getPeso();
 		}
-		
+		}
 		return peso;
 	}
 	
@@ -95,7 +98,7 @@ public class Borsa {
 		
 		if (!this.isEmpty()) 
 		{
-			s.append("Contenuto borsa ("+this.getPeso()+"kg/"+this.getPesoMax()+"kg): ");
+			s.append("("+this.getPeso()+"kg/"+this.getPesoMax()+"kg): ");
 			
 			for (int i= 0; i<this.numeroAttrezzi; i++)
 			{
@@ -105,7 +108,7 @@ public class Borsa {
 		}
 		
 		else
-		s.append("Borsa vuota");
+		s.append("Vuota");
 		
 		return s.toString();
 	}

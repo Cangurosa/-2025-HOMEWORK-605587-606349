@@ -1,9 +1,15 @@
 package it.uniroma3.diadia.Comando;
 
 import java.util.Scanner;
+import it.uniroma3.diadia.IO;
 
-public class FabbricaDiComandiFisarmonica{
+public class FabbricaDiComandiFisarmonica implements FabbricaDiComandi{
 
+    private IO io;
+    public FabbricaDiComandiFisarmonica(IO io){
+        this.io = io;
+    }
+    
     public Comando costruisciComando(String istruzione) {
     Scanner scannerDiParole = new Scanner(istruzione);
     String nomeComando = null;
@@ -39,6 +45,7 @@ public class FabbricaDiComandiFisarmonica{
     
     else comando = new ComandoNonValido();
     comando.setParametro(parametro);
+    comando.setIO(this.io);
     
     return comando;
 }

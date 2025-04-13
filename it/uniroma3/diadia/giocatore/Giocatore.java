@@ -13,7 +13,7 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
  */
 
 public class Giocatore {
-	static final private int CFU_INIZIALI = 20; //CFU di partenza
+	private static final int CFU_INIZIALI = 20; //CFU di partenza
 	private Borsa borsa; //variabile borsa del giocatore
 	private int cfu; //variabile cfu
 

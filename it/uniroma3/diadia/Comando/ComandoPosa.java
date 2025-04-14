@@ -13,11 +13,17 @@ public class ComandoPosa implements Comando{
     public void esegui(Partita partita)
     {
         Attrezzo a = partita.getBorsa().getAttrezzo(nomeAttrezzo);
-
-        partita.getStanzaCorrente().addAttrezzo(a);
-        partita.getBorsa().removeAttrezzo(a.getNome());
-
-        io.mostraMessaggio("Attrezzo posato nella stanza e rimosso dalla borsa");
+        if(a!=null)
+        {
+            partita.getStanzaCorrente().addAttrezzo(a);
+            partita.getBorsa().removeAttrezzo(a.getNome());
+    
+            io.mostraMessaggio("Attrezzo posato nella stanza e rimosso dalla borsa");
+        }
+        else
+        {
+            io.mostraMessaggio("Scegliere un attrezzo valido");
+        }
     }
 
     @Override

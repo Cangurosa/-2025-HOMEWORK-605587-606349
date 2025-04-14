@@ -1,9 +1,10 @@
-package it.uniroma3.diadia;
+package it.uniroma3.diadia.Comando;
 
-import java.util.Scanner;
+import it.uniroma3.diadia.Partita;
+import it.uniroma3.diadia.IO;
 
 /**
- * Questa classe modella un comando.
+ * Questa interfaccia modella un comando.
  * Un comando consiste al piu' di due parole:
  * il nome del comando ed un parametro
  * su cui si applica il comando.
@@ -14,7 +15,21 @@ import java.util.Scanner;
  * @version base
  */
 
-public class Comando {
+public interface Comando{
+
+    public void esegui(Partita partita);
+
+    public void setParametro(String parametro);
+
+    public String getNome();
+
+    public String getParametro();
+    
+    public void setIO(IO io);
+}
+
+
+/*public class Comando {
 
     private String nome;
     private String parametro;
@@ -44,4 +59,4 @@ public class Comando {
     public boolean sconosciuto() {
         return (this.nome == null);
     }
-}
+}*/

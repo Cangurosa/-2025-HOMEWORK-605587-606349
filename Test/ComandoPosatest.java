@@ -11,6 +11,7 @@ public class ComandoPosatest {
     private Attrezzo attrezzo1;
     private Attrezzo attrezzo2;
     private Comando comando;
+    private IO io;
 
     @BeforeEach
     public void setUp()
@@ -19,6 +20,8 @@ public class ComandoPosatest {
         attrezzo1 = new Attrezzo("spada", 2);
         attrezzo2 = new Attrezzo("Randello", 12);
         comando = new ComandoPosa();
+        io = new IOConsole();
+        comando.setIO(io);
     }
 
     @Test

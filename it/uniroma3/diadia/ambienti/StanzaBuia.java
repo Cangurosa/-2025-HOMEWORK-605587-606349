@@ -1,25 +1,29 @@
 package it.uniroma3.diadia.ambienti;
 
-import it.uniroma3.diadia.attrezzi.*;
-
 public class StanzaBuia extends Stanza{
-    private String NomeAttrezzoDescrizione;
+    private String attrezzoLuce;
 
-    public StanzaBuia(String nome)
+    public StanzaBuia(String nome, String attrezzoLuce)
     {
         super(nome);
-       Attrezzo attrezzodescrizione = new Attrezzo("Lanterna", 4);
-       NomeAttrezzoDescrizione = attrezzodescrizione.getNome();
+        this.attrezzoLuce = attrezzoLuce;
+
     }
 
+    @Override
     public String getDescrizione()
     {
-        if(this.hasAttrezzo(NomeAttrezzoDescrizione))
+        String buio = new String();
+        buio = "qui c'è buio pesto";
+        if(!this.hasAttrezzo(attrezzoLuce))
         {
-            return toString();
+            return buio;
         }
-       else
-       return "Qui c'è un buio pesto";
+        else
+        {
+            return super.getDescrizione();
+        }
     }
+
 
 }

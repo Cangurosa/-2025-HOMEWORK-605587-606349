@@ -10,6 +10,7 @@ public class ComandoPrenditest {
     private Partita partita;
     private Attrezzo attrezzo;
     private Comando comando;
+    private IO io;
 
     @BeforeEach
     public void setUp()
@@ -17,6 +18,8 @@ public class ComandoPrenditest {
         partita = new Partita();
         attrezzo = new Attrezzo("mazza", 4);
         comando = new ComandoPrendi();
+        io = new IOConsole();
+        comando.setIO(io);
     }
 
     @Test
@@ -25,6 +28,6 @@ public class ComandoPrenditest {
         partita.getStanzaCorrente().addAttrezzo(attrezzo);
         comando.setParametro("mazza");
         comando.esegui(partita);
-        assertFalse(partita.getBorsa().hasAttrezzo("mazza"));
+        assertTrue(partita.getBorsa().hasAttrezzo("mazza"));
     }
 }
